@@ -43,7 +43,7 @@ public_ip=`curl --retry 10 icanhazip.com`
 private_ip=`echo $(hostname -I)`
 node_id=$private_ip
 
-fault_domain=$(curl --max-time 50000 --retry 12 --retry-delay 50000 http://169.254.169.254/metadata/v1/InstanceInfo -s -S | sed -e 's/.*"FD":"\([^"]*\)".*/\1/')
+fault_domain=$(curl --max-time 50000 --retry 12 --retry-delay 50000 -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-03-01&format=text" -s -S)
 rack=FD$fault_domain
 
 echo "Calling addNode.py with the settings:"
