@@ -84,4 +84,5 @@ cd install-datastax-ubuntu-5.5.1/bin/lcm
 --pubip $public_ip \
 --privip $private_ip \
 --nodeid $node_id \
---dbpasswd $dbpasswd
+--dbpasswd $dbpasswd \
+--pause 100
